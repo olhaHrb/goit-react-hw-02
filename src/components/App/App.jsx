@@ -1,3 +1,15 @@
-//import { useState } from 'react'
+import Description from "../Description/Description";
+import Options from "../Options/Options";
+import Feedback from "../Feedback/Feedback";
 
-//export default App
+const App = () => {
+  return (
+    <div>
+      <Description />
+      <Options />
+      <Feedback />
+    </div>
+  );
+};
+
+export default App;
