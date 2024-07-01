@@ -1,13 +1,10 @@
 import css from "./Options.module.css";
 
-const Options = () => {
+const Options = ({ text, onUpdate }) => {
   return (
-    <div className={css.container}>
-      <button className={css.button}>Good</button>
-      <button className={css.button}>Neutral</button>
-      <button className={css.button}>Bad</button>
-      <button className={css.button}>Reset</button>
-    </div>
+    <button className={css.button} onClick={onUpdate}>
+      {text}
+    </button>
   );
 };
 
