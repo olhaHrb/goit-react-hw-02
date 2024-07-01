@@ -29,15 +29,18 @@ const App = () => {
   };
 
   const totalFeedback = clicks.good + clicks.neutral + clicks.bad;
+  const positiveFeedback = Math.round((clicks.good / totalFeedback) * 100);
 
   return (
     <div>
       <Description />
-      <Options updateFeedback={updateFeedback} total={totalFeedback}>
-        {" "}
-      </Options>
+      <Options updateFeedback={updateFeedback} total={totalFeedback}></Options>
       {totalFeedback > 0 ? (
-        <Feedback value={clicks}></Feedback>
+        <Feedback
+          value={clicks}
+          total={totalFeedback}
+          positive={positiveFeedback}
+        ></Feedback>
       ) : (
         <Notification></Notification>
       )}
