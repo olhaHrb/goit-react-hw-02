@@ -1,5 +1,5 @@
 import { useState } from "react";
-//import { useEffect } from "react";
+import { useEffect } from "react";
 import Description from "../Description/Description";
 import Options from "../Options/Options";
 import Feedback from "../Feedback/Feedback";
@@ -11,7 +11,18 @@ const App = () => {
     neutral: 0,
     bad: 0,
   };
-  const [clicks, setClicks] = useState(state);
+  const [clicks, setClicks] = useState(() => {
+    const savedClicks = window.localStorage.getItem("saved-clicks");
+    if (savedClicks !== null) {
+      return JSON.parse(savedClicks);
+    }
+    return state;
+  });
+
+  useEffect(() => {
+    window.localStorage.setItem("saved-clicks", JSON.stringify(clicks));
+  }, [clicks]);
+
   const updateFeedback = (feedbackType) => {
     if (feedbackType === "reset") {
       setClicks({
