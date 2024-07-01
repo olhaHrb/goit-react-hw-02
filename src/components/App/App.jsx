@@ -54,7 +54,12 @@ const App = () => {
         //       value={clicks.bad}
         onUpdate={() => updateFeedback("bad")}
       ></Options>
-      <Options text="Reset" onUpdate={() => updateFeedback("reset")}></Options>
+      {totalFeedback > 0 && (
+        <Options
+          text="Reset"
+          onUpdate={() => updateFeedback("reset")}
+        ></Options>
+      )}
       <Feedback
         indicator="Good: "
         value={clicks.good}
