@@ -1,15 +1,13 @@
 import css from "./Feedback.module.css";
 
-const Feedback = ({ indicator, value, total }) => {
-  if (total > 0) {
-    return (
-      <div className={css.container}>
-        <p>
-          {indicator} {value}
-        </p>
-      </div>
-    );
-  }
+const Feedback = ({ value: { good, neutral, bad } }) => {
+  return (
+    <div className={css.container}>
+      <p>Good: {good} </p>
+      <p>Neutral: {neutral}</p>
+      <p>Bad: {bad} </p>
+    </div>
+  );
 };
 
 export default Feedback;

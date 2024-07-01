@@ -1,10 +1,18 @@
 import css from "./Options.module.css";
 
-const Options = ({ text, onUpdate }) => {
+const Options = ({ updateFeedback }) => {
   return (
-    <button className={css.button} onClick={onUpdate}>
-      {text}
-    </button>
+    <>
+      <button className={css.button} onClick={() => updateFeedback("good")}>
+        Good
+      </button>
+      <button className={css.button} onClick={() => updateFeedback("neutral")}>
+        Neutral
+      </button>
+      <button className={css.button} onClick={() => updateFeedback("bad")}>
+        Bad
+      </button>
+    </>
   );
 };
 
