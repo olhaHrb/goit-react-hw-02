@@ -13,10 +13,19 @@ const App = () => {
   };
   const [clicks, setClicks] = useState(state);
   const updateFeedback = (feedbackType) => {
-    setClicks({
-      ...clicks,
-      [feedbackType]: clicks[feedbackType] + 1,
-    });
+    if (feedbackType === "reset") {
+      setClicks({
+        ...clicks,
+        good: 0,
+        neutral: 0,
+        bad: 0,
+      });
+    } else {
+      setClicks({
+        ...clicks,
+        [feedbackType]: clicks[feedbackType] + 1,
+      });
+    }
   };
 
   const totalFeedback = clicks.good + clicks.neutral + clicks.bad;
@@ -24,7 +33,9 @@ const App = () => {
   return (
     <div>
       <Description />
-      <Options updateFeedback={updateFeedback}> </Options>
+      <Options updateFeedback={updateFeedback} total={totalFeedback}>
+        {" "}
+      </Options>
       {totalFeedback > 0 ? (
         <Feedback value={clicks}></Feedback>
       ) : (
